@@ -18,6 +18,10 @@ class Game:
         print('     ','  0','   ','   1',' ','   2','    ','  3','       ','  4','     ','  5')
         print('Player 2')
 
+
+    def update(self):
+        " mch 3arfaaaaa"
+
 g=Game()
 g.draw()
 
