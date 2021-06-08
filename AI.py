@@ -20,6 +20,8 @@ class AI():
             for index in range(6):
                 newboard = copy.deepcopy(board) 
                 num_of_balls = newboard[index]
+                if num_of_balls == 0:
+                    continue
                 newboard[index]=0
                 pocket = index + 1
                 
@@ -43,6 +45,8 @@ class AI():
             for index in range(7,13):
                 newboard = copy.deepcopy(self.boardMoves) 
                 num_of_balls = newboard[index]
+                if num_of_balls == 0:
+                    continue
                 newboard[index]=0
                 pocket = index + 1
                 print(index)
@@ -59,7 +63,7 @@ class AI():
                     # print(pocket)
                 tree.add_child(newboard)
                 moves.append(newboard)   
-        return tree   
+        return moves   
             # for i in range(6):
             #     if self.index != 7:
             #         self.board[self.index] = self.board[self.index]+1
@@ -103,17 +107,18 @@ class Node:
     # def __repr__(self):
     #     return self.name
     def add_child(self, node):
+        
         assert isinstance(node, Node)
         self.children.append(node)
 
-    def __iter__(self):
-        "implement the iterator protocol"
-        for v in chain(*imap(iter, self.children)):
-            yield v
-        yield self.value
+    # def __iter__(self):
+    #     "implement the iterator protocol"
+    #     for v in chain(*imap(iter, self.children)):
+    #         yield v
+    #     yield self.value
         
-    def __str__(self):
-        return 'Node(' + str(self.val) + ')'
+    def __repr__(self):
+        return str(self.children)
  
     def get_data(self):
         return self.val
@@ -127,8 +132,6 @@ class Node:
         
         return self.children
 
-    def set_next(self,next):
-        self.next = next
         
 def walk(tree):
         if tree is not None:
@@ -141,11 +144,11 @@ def walk(tree):
 
 
 board =[0,4,4,4,4,9]  + [0] + [4]*6 + [0]
-print(board)
+# print(board)
 trial = AI(board)
 board = trial.possible_moves(0, board)
 
-print(board.get_children())
+print(board)
 # for x in board:
 #     print(x)
 
