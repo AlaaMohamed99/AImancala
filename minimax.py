@@ -46,12 +46,3 @@ def Minimax_alphabeta(node , depthlevel , alpha , beta , AI_maxplayer ):
                 break #cut branch
         return beta
                 
-                
-                
-                
-                
-                
-                
-                
-                break #cut branch
-        return child
