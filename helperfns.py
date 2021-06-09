@@ -53,6 +53,20 @@ def play(board, block_no, player,mode):
     return board, Turn
 
 
+def get_empty_pockets(board, player):
+    empty_pockets = []
+    block_no_start=0
+    if(player):
+        block_no_start= 7
+    for i in range(6):
+        if (board[block_no_start + i] == 0):
+            empty_pockets.append((i+1))
+    return empty_pockets
+
+
+#example, since player 0 is paying, he has empty pockets number 1,3,6 that's the return of the function
+#board = [0,1,0,2,3,0,0  , 2,2,0,1,3,1,0]
+#print(get_empty_pockets(board,0))
 
 
 #when one side has no more moves (empty side in the board)
