@@ -6,7 +6,7 @@ class Game:
         self.player1_cups=[3,4,2,0,4,0]
         
         #self.player2_cups=[4]*self.num_cups
-        self.player2_cups=[3,2,4,2,1,4]
+        self.player2_cups=[3,2,5,7,1,4]
         self.mancala_cup_1=0 #dih l bylem feha#
         self.mancala_cup_2=0
         #self.final_list=self.player1_cups+self.mancala_cup_1+self.player2_cups+self.mancala_cup_2
@@ -36,6 +36,7 @@ class Game:
         compressed_list=[]
         cup=0
         score=0
+       
         for (index,i) in enumerate(self.player1_cups):
             if i==0:
                
@@ -44,12 +45,17 @@ class Game:
         
         
         for i in indices:
-           #print(i)
-        
+          
            #3lchan lw feh aktr mn cup of zero#
           
            compressed_list.append( self.player2_cups[i])
-        zero_index=self.player2_cups.index(max(self.player2_cups))
+        print(compressed_list)
+        #print(max(compressed_list))
+        #maxi=max(compressed_list)
+        #print(maxi)
+       
+        zero_index=self.player2_cups.index(max(compressed_list))
+        
 
            
            #if i+1<5 and self.player2_cups[i+1]>self.player2_cups[i]:
@@ -79,7 +85,7 @@ class Game:
                         break
         
         self.mancala_cup_1+=self.player2_cups[zero_index]
-        print(self.mancala_cup_1)
+        #print(self.mancala_cup_1)
         return cup, score
         
 
