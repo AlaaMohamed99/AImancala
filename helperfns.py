@@ -112,6 +112,18 @@ def is_finalboard(board):
     if (count1 == 0 or count2 ==0):
         return True
     return False
+
+def save_board(board):
+    file2 = open(r"board_state.txt","w+")
+    file2.write(str(board))
+    file2.close()
+
+def load_board():
+    file2 = open(r"board_state.txt","r+")
+    board =file2.read()
+    file2.close()
+    return board
+
 """
 board = [5,1,3,2,3,2,3  , 2,2,0,1,3,1,0]
 #board = [0,0,0,0,0,1,3  , 0,0,0,0,0,0,10]
@@ -124,6 +136,12 @@ print(calc_score(board))
 
 board = [6,1,3,2,3,2,3  , 2,2,0,1,3,1,0]
 mode = input("For stealing mode press: 1 else press: 0")
+
+#saving and loading board
+save_board(board)
+saved_brd= load_board()
+print(saved_brd)
+
 while(not is_finalboard(board)):
     block_no=input(" Enter a move:")
     board, player= play(board, int(block_no),0, int(mode))
