@@ -1,43 +1,54 @@
 from GAME import *
 
- def score(self):
+   def score(self):
         indices=[]
+        flag=0
+        compressed_list=[]
+        cup=0
+        score=0
         for (index,i) in enumerate(self.player1_cups):
             if i==0:
                
-                #print (index)
+              
                 indices.append(index)
-        #print(indices)
-        flag=0
-        for i in indices:
-           
-           
-            print(i)
-
         
+        
+        for i in indices:
+           #print(i)
+        
+           #3lchan lw feh aktr mn cup of zero#
+          
+           compressed_list.append( self.player2_cups[i])
+        zero_index=self.player2_cups.index(max(self.player2_cups))
 
-            for (ind,stones) in enumerate( self.player1_cups):
+           
+           #if i+1<5 and self.player2_cups[i+1]>self.player2_cups[i]:
+           #    zero_index=i+1
+          
+        print(zero_index)
+
+
+
+
+        for (ind,stones) in enumerate( self.player1_cups):
             
-            
-                if i-ind > 0 :
+            if zero_index-ind > 0 :
                     #print("zero_index - l ablo")
-                    x=i-ind
+                    x=zero_index-ind
                     #print(x)
                     #print("stones ")
                     #print(stones)
                    
-                    if i-ind ==stones:
+                    if zero_index-ind ==stones:
+                        cup=zero_index-ind
                         flag=1
-                    if flag==1 and self.player2_cups[i]!=0:
-                        self.mancala_cup_1+=self.player2_cups[i]
+                    if flag==1 and self.player2_cups[zero_index]!=0:
+                        #print(self.player2_cups[i])
+                        score=self.player2_cups[zero_index]
+                        gain=self.player2_cups[zero_index]
+                        break
+        
+        self.mancala_cup_1+=self.player2_cups[zero_index]
         print(self.mancala_cup_1)
-                    
-
-
-             #if self.player1_cups[j-1]==1:
-
-                 #cup = j-1
-                 #print(cup)
-         
-
-
+        return cup, score
+        

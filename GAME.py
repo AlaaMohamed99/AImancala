@@ -6,7 +6,7 @@ class Game:
         self.player1_cups=[3,4,2,0,4,0]
         
         #self.player2_cups=[4]*self.num_cups
-        self.player2_cups=[3,2,4,5,1,4]
+        self.player2_cups=[3,2,4,2,1,4]
         self.mancala_cup_1=0 #dih l bylem feha#
         self.mancala_cup_2=0
         #self.final_list=self.player1_cups+self.mancala_cup_1+self.player2_cups+self.mancala_cup_2
@@ -32,34 +32,55 @@ class Game:
     #def score(self,board,turn,stealing=True):
     def score(self):
         indices=[]
+        flag=0
+        compressed_list=[]
+        cup=0
+        score=0
         for (index,i) in enumerate(self.player1_cups):
             if i==0:
                
-                #print (index)
+              
                 indices.append(index)
-        #print(indices)
-        flag=0
+        
+        
         for i in indices:
+           #print(i)
+        
            #3lchan lw feh aktr mn cup of zero#
-         for (ind,stones) in enumerate( self.player1_cups):
+          
+           compressed_list.append( self.player2_cups[i])
+        zero_index=self.player2_cups.index(max(self.player2_cups))
+
+           
+           #if i+1<5 and self.player2_cups[i+1]>self.player2_cups[i]:
+           #    zero_index=i+1
+          
+        print(zero_index)
+
+
+
+
+        for (ind,stones) in enumerate( self.player1_cups):
             
-            if i-ind > 0 :
+            if zero_index-ind > 0 :
                     #print("zero_index - l ablo")
-                    x=i-ind
+                    x=zero_index-ind
                     #print(x)
                     #print("stones ")
                     #print(stones)
                    
-                    if i-ind ==stones:
-                        cup=i-ind
+                    if zero_index-ind ==stones:
+                        cup=zero_index-ind
                         flag=1
-                    if flag==1 and self.player2_cups[i]!=0:
-                        print(self.player2_cups[i])
-                        score=self.player2_cups[i]
-                        gain=self.player2_cups[i]
+                    if flag==1 and self.player2_cups[zero_index]!=0:
+                        #print(self.player2_cups[i])
+                        score=self.player2_cups[zero_index]
+                        gain=self.player2_cups[zero_index]
                         break
-        self.mancala_cup_1+=self.player2_cups[i]
+        
+        self.mancala_cup_1+=self.player2_cups[zero_index]
         print(self.mancala_cup_1)
+        return cup, score
         
 
 
