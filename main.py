@@ -19,9 +19,10 @@ while(not is_finalboard(board)):
         block_no=input(" Enter a move: ")
         board, player= play(board, int(block_no),player, int(mode))       
         d.draw(board)
-        block_no=input(" Well done play again")
-        board, player= play(board, int(block_no),0, int(mode))
-        d.draw(board)
+        if (player==0):
+            block_no=input(" Well done play again")
+            board, player= play(board, int(block_no),player, int(mode))
+            d.draw(board)
 
     while(player == 1):
         bestpath,board,player = a.Minimax_alphabeta( board , depth,alpha_initial , beta_initial ,player )

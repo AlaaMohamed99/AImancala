@@ -15,14 +15,17 @@ class Game:
 
 
     def draw(self,board):
-        print("Player 1")
-        # print('     ','  5','   ','   4',' ','   3','    ','  2','       ','  1','     ','  0')
+        print("AI Player")
+        # print('     ','  0','   ','   1',' ','   2','    ','  3','       ','  4','     ','  5')
         print('     ','   1',' ','   2','    ','  3','       ','  4','     ','  5','     ','  6')
-
+        print('[ ]',' ','(  '+ str(board[12]) + '  )','(  '+ str(board[11]) + '   )','(  '+ str(board[10]) + '   )','(   '+ str(board[9]) + '  )','(  '+ str(board[8]) + '   )','(   '+ str(board[7]) + '  )',' ','[ ]')        
+        print('['+str(board[13]) +']'+ '                                                                                '+'['+str(board[6]) +']' )
         print('[ ]',' ','(  '+ str(board[0]) + '  )','(  '+ str(board[1]) + '   )','(  '+ str(board[2]) + '   )','(   '+ str(board[3]) + '  )','(  '+ str(board[4]) + '   )','(   '+ str(board[5]) + '  )',' ','[ ]')
-        print('[ ]',' ','(  '+ str(board[7]) + '  )','(  '+ str(board[8]) + '   )','(  '+ str(board[9]) + '   )','(   '+ str(board[10]) + '  )','(  '+ str(board[11]) + '   )','(   '+ str(board[12]) + '  )',' ','[ ]')
-        print('     ','  0','   ','   1',' ','   2','    ','  3','       ','  4','     ','  5')
-        print('Player 2')
+        # print('     ','  5','   ','   4',' ','   3','    ','  2','       ','  1','     ','  0')
+
+        print('     ','   1',' ','   2','    ','  3','       ','  4','     ','  5','     ','  6')
+        
+        print('Human Player')
 
 
 

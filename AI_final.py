@@ -120,7 +120,7 @@ class AI():
                 # print(',,,,,,,,,,')
                 # print(move_board)
 
-                value,_ = self.Minimax_alphabeta(list(move_board), depthlevel-1 ,alpha , beta ,turn)
+                value,_ ,AI_maxplayer= self.Minimax_alphabeta(list(move_board), depthlevel-1 ,alpha , beta ,turn)
                 bestpath  = max(value , bestpath)
                 alpha = max(bestpath,alpha)
                 # print(move_board)
@@ -139,7 +139,7 @@ class AI():
                 # print('-------------------')
                 # print(move_board)
                
-                value,_ = self.Minimax_alphabeta(list(move_board ), depthlevel-1, alpha , beta , turn)
+                value,_ ,AI_maxplayer= self.Minimax_alphabeta(list(move_board ), depthlevel-1, alpha , beta , turn)
                 bestpath  = min(value , bestpath)
                 alpha = min(bestpath,alpha)
                 # print(move_board)

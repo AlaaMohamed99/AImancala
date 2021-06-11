@@ -58,7 +58,7 @@ def score_evaluation(board, turn, stealing=True):
                     if idx-i == board[i]:
                         if board[12-idx]!=0: #the opposite pocket has balls that can be stealed
                             heu_score[12-idx] = board[12-idx]*prevent_stealing        
-    print(f'this is the max score for leaves {max(heu_score)}')
+    # print(f'this is the max score for leaves {max(heu_score)}')
     return max(heu_score) 
 
 
