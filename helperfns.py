@@ -134,7 +134,7 @@ board = [0,0,0,0,0,1,14  , 0,0,0,0,0,0,10]
 print(calc_score(board))
 """
 
-board = [6,1,3,2,3,2,3  , 2,2,0,1,3,1,0]
+"""board = [6,1,3,2,3,2,3  , 2,2,0,1,3,1,0]
 mode = input("For stealing mode press: 1 else press: 0")
 
 #saving and loading board
@@ -149,7 +149,7 @@ while(not is_finalboard(board)):
     while (player == 0):
         block_no=input(" Well done play again")
         board, player= play(board, int(block_no),0, int(mode))
-        print_board(board)
+        print_board(board)"""
     #alpha beta plays
     #print board again
 #calc score
