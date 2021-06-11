@@ -3,10 +3,10 @@ class Game:
     def __init__(self):
         self.num_cups=6
         #self.player1_cups=[4]*self.num_cups
-        self.player1_cups=[3,4,2,0,4,0]
+        self.player1_cups=[4,4,4,4,4,4]
         
         #self.player2_cups=[4]*self.num_cups
-        self.player2_cups=[3,2,5,7,1,4]
+        self.player2_cups=[4,4,4,4,4,4]
         self.mancala_cup_1=0 #dih l bylem feha#
         self.mancala_cup_2=0
         #self.final_list=self.player1_cups+self.mancala_cup_1+self.player2_cups+self.mancala_cup_2
@@ -14,69 +14,24 @@ class Game:
         #print(self.final_list)
 
 
-    def draw(self):
+    def draw(self,board):
         print("Player 1")
-        print('     ','  5','   ','   4',' ','   3','    ','  2','       ','  1','     ','  0')
-        print('[ ]',' ','(  '+ str(self.player1_cups[0]) + '  )','(  '+ str(self.player1_cups[1]) + '   )','(  '+ str(self.player1_cups[2]) + '   )','(   '+ str(self.player1_cups[3]) + '  )','(  '+ str(self.player1_cups[4]) + '   )','(   '+ str(self.player1_cups[5]) + '  )',' ','[ ]')
-        print('[ ]',' ','(  '+ str(self.player2_cups[0]) + '  )','(  '+ str(self.player2_cups[1]) + '   )','(  '+ str(self.player2_cups[2]) + '   )','(   '+ str(self.player2_cups[3]) + '  )','(  '+ str(self.player2_cups[4]) + '   )','(   '+ str(self.player2_cups[5]) + '  )',' ','[ ]')
+        # print('     ','  5','   ','   4',' ','   3','    ','  2','       ','  1','     ','  0')
+        print('     ','   1',' ','   2','    ','  3','       ','  4','     ','  5','     ','  6')
+
+        print('[ ]',' ','(  '+ str(board[0]) + '  )','(  '+ str(board[1]) + '   )','(  '+ str(board[2]) + '   )','(   '+ str(board[3]) + '  )','(  '+ str(board[4]) + '   )','(   '+ str(board[5]) + '  )',' ','[ ]')
+        print('[ ]',' ','(  '+ str(board[7]) + '  )','(  '+ str(board[8]) + '   )','(  '+ str(board[9]) + '   )','(   '+ str(board[10]) + '  )','(  '+ str(board[11]) + '   )','(   '+ str(board[12]) + '  )',' ','[ ]')
         print('     ','  0','   ','   1',' ','   2','    ','  3','       ','  4','     ','  5')
         print('Player 2')
 
 
 
 
-    #def score(self,board,turn,stealing=True):
-    def score(self):
-        indices=[]
-        flag=0
-        compressed_list=[]
-        cup=0
-        score=0
-       
-        for (index,i) in enumerate(self.player1_cups):
-            if i==0:   
-                indices.append(index)
-        
-        for i in indices:
-           #3lchan lw feh aktr mn cup of zero#
-           compressed_list.append( self.player2_cups[i])
-        #print(compressed_list)
 
-        zero_index=self.player2_cups.index(max(compressed_list))
-        
-        print(zero_index)
-
-        for (ind,stones) in enumerate( self.player1_cups):
-            
-            if zero_index-ind > 0 :
-                #print("zero_index - l ablo")
-                x=zero_index-ind
-                #print(x)
-                #print("stones ")
-                #print(stones)
-                
-                if zero_index-ind ==stones:
-                    cup=zero_index-ind
-                    flag=1
-                if flag==1 and self.player2_cups[zero_index]!=0:
-                    #print(self.player2_cups[i])
-                    score=self.player2_cups[zero_index]
-                    gain=self.player2_cups[zero_index]
-                    break
-        
-        self.mancala_cup_1+=self.player2_cups[zero_index]
-        #print(self.mancala_cup_1)
-        return cup, score
-        
 
 
 
        
 
         
-
-g=Game()
-#g.draw()
-g.score()
-
-        
+   

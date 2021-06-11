@@ -29,9 +29,9 @@ def score_evaluation(board, turn, stealing=True):
 
     # heuristic 3 prefer pockets farther from the mancala (for both mode)
     far_score = farther_score
-    #for i in  board[start,start+6]:
-    #    heu_score [i] +=  far_score
-    #    far_score -= 0.15
+    for i in  board[start:start+6]:
+        heu_score [i] +=  far_score
+        far_score -= 0.15
    
 
     if stealing:
