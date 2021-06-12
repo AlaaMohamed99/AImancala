@@ -36,6 +36,7 @@ class AI():
                 
                 if pocket == 6:
                     turn = 0
+                    print('repeat human')
                 else:
                     turn = 1
                 
@@ -64,6 +65,7 @@ class AI():
                 pocket -= 1
                 if pocket == 13:
                     turn = 1
+                    print('repeattt')
                 else:
                     turn = 0
                 moves[tuple(newboard)] = turn   
@@ -93,7 +95,7 @@ class AI():
     #         return True
     #     return False
    
-    def Minimax_alphabeta(self, currentboard , depthlevel,alpha , beta   ,AI_maxplayer ):
+    def Minimax_alphabeta(self, currentboard , depthlevel,alpha , beta ,stealing  ,AI_maxplayer ):
     
         heuristic_score = 0
         
@@ -103,14 +105,15 @@ class AI():
         if depthlevel == 0 or is_finalboard(currentboard):
             board_now = copy.deepcopy(currentboard)
             #heuristic_score = self.Heuristic(board_now)  
-            heuristic_score = score_evaluation(board_now,AI_maxplayer)
+            heuristic_score = score_evaluation(board_now,AI_maxplayer,stealing)
+            # print('score='+str(heuristic_score))
             # print('leaf board')        
             # print(board_now)                 
             return heuristic_score , board_now , AI_maxplayer
         
         
         if AI_maxplayer == 1:     
-            # print(depthlevel)
+            # print('depth='+str(depthlevel))
             bestpath  = alpha_initial 
             board_now = copy.deepcopy(currentboard)
 
@@ -120,16 +123,16 @@ class AI():
                 # print(',,,,,,,,,,')
                 # print(move_board)
 
-                value,_ ,AI_maxplayer= self.Minimax_alphabeta(list(move_board), depthlevel-1 ,alpha , beta ,turn)
+                value,_ ,AI_maxplayer= self.Minimax_alphabeta(list(move_board), depthlevel-1 ,alpha , beta,stealing ,turn)
                 bestpath  = max(value , bestpath)
                 alpha = max(bestpath,alpha)
                 # print(move_board)
                 if alpha >= beta:
                     break #cut branch
-            return bestpath , list(move_board) , AI_maxplayer
+            return bestpath , list(move_board) , turn
     
         if AI_maxplayer == 0:    
-            # print(depthlevel)
+            # print('depth='+str(depthlevel))
 
             bestpath  = beta_initial
             board_now = copy.deepcopy(currentboard)
@@ -139,14 +142,14 @@ class AI():
                 # print('-------------------')
                 # print(move_board)
                
-                value,_ ,AI_maxplayer= self.Minimax_alphabeta(list(move_board ), depthlevel-1, alpha , beta , turn)
+                value,_ ,AI_maxplayer= self.Minimax_alphabeta(list(move_board ), depthlevel-1, alpha , beta,stealing , turn)
                 bestpath  = min(value , bestpath)
                 alpha = min(bestpath,alpha)
                 # print(move_board)
                
                 if alpha >= beta:
                     break #cut branch
-            return bestpath , list(move_board) , AI_maxplayer
+            return bestpath , list(move_board) , turn
     
     def Minimax_alphabeta_client(self, currentboard , depthlevel,alpha , beta   ,AI_maxplayer ):
    
@@ -181,7 +184,7 @@ class AI():
                # print(move_board)
                if alpha >= beta:
                    break #cut branch
-           return bestpath , list(move_board) , AI_maxplayer
+           return bestpath , list(move_board) , turn
    
        if AI_maxplayer == 1:    
            # print(depthlevel)
@@ -201,7 +204,7 @@ class AI():
               
                if alpha >= beta:
                    break #cut branch
-           return bestpath , list(move_board) , AI_maxplayer
+           return bestpath , list(move_board) , turn
    
        
         
