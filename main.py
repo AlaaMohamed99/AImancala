@@ -43,7 +43,7 @@ while(not is_finalboard(board)):
         while(player == 1):
             bestpath,board,player = a.Minimax_alphabeta( board , depth,alpha_initial , beta_initial,mode ,player )
             d.draw(board)
-            
+            print(bestpath)            
 
 score, winner = calc_score(board)
 if winner == 0:
