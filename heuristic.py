@@ -30,14 +30,14 @@ def score_evaluation(board, turn, stealing=True):
         for i in indices_again:
             heu_score[i] += repeating_score
 
-    print(f'from 1 {heu_score}')
+    #print(f'from 1 {heu_score}')
 
     # heuristic 3 prefer pockets farther from the mancala (for both mode)
     for idx in range(start,start+6):
         if board[idx] != 0:
             heu_score[idx] += farther_score*(start+6-idx)
             break
-    print(f'from 3 {heu_score}')
+    #print(f'from 3 {heu_score}')
 
     if stealing:
         # heuristic 1  give high weight for move causes stealing
@@ -49,23 +49,24 @@ def score_evaluation(board, turn, stealing=True):
                     if idx-i == board[i]:
                         if board[12-idx] != 0:  # the opposite pocket has balls that can be stealed
                             heu_score[12-idx] += board[12-idx]*stealing_score
-        print(f'from 2 {heu_score}')
+        #print(f'from 2 {heu_score}')
 
         # heuristic 4 prevent stealilng
         # check if the opposite user can steal from me
         opp_start = 0 if start == 7 else 7
-        #print (opp_start)
+        ##print (opp_start)
         zero_idx_opp = [idx for idx in range(
             opp_start, opp_start+6) if board[idx] == 0]
-        #print (zero_idx_opp)
+        ##print (zero_idx_opp)
         if len(zero_idx_opp) > 0:
             for idx in zero_idx_opp:
                 for i in range(opp_start, idx):
                     if idx-i == board[i]:
                         if board[12-idx] != 0:  # the opposite pocket has balls that can be stealed
                             heu_score[12-idx] += board[12-idx]*prevent_stealing
-    print(f'this is the max score for leaves {sum(heu_score)}')
+    #print(f'from 4 {heu_score}')
+    #print(f'this is the max score for leaves {sum(heu_score)}')
     return sum(heu_score)
 
 
-print(score_evaluation([4, 4, 4, 4, 4, 4, 0, 5, 5, 5, 5, 0, 0, 0], 1, True))
+#print(score_evaluation([4, 4, 4, 4, 4, 4, 0, 5, 5, 5, 5, 0, 0, 0], 1, True))
