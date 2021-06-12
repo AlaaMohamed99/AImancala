@@ -8,9 +8,16 @@ d.draw(board)
 
 mode = input("For stealing mode press: 1 else press: 0  ")
 player =int( input("choose 0 if you want to play first else 1 :  "))
-level = int( input("choose difficulty level: "))
+# level = int( input("choose difficulty level: "))
+
+
+if mode==0:
+    mode= False
+else : mode=True
+
+
 a = AI(board)
-depth = 3
+depth = 2
 while(not is_finalboard(board)):
 
 
@@ -20,12 +27,12 @@ while(not is_finalboard(board)):
         board, player= play(board, int(block_no),player, int(mode))       
         d.draw(board)
         if (player==0):
-            block_no=input(" Well done play again")
+            block_no=input(" play again.....Enter a move: ")
             board, player= play(board, int(block_no),player, int(mode))
             d.draw(board)
 
     while(player == 1):
-        bestpath,board,player = a.Minimax_alphabeta( board , depth,alpha_initial , beta_initial ,player )
+        bestpath,board,player = a.Minimax_alphabeta( board , depth,alpha_initial , beta_initial,mode ,player )
         d.draw(board)
             
             
