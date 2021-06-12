@@ -47,7 +47,7 @@ while(not is_finalboard(board)):
             block_no=input(" Enter a move: ")
             board, player= play(board, int(block_no),player, int(mode))       
             d.draw(board)
-            if (player==0):
+            if (player==0 and not is_finalboard(board)):
                 block_no=input(" play again.....Enter a move: ")
                 board, player= play(board, int(block_no),player, int(mode))
                 d.draw(board)
