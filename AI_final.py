@@ -3,6 +3,7 @@ import math
 # from GAME import *
 from helperfns import is_finalboard
 from heuristic import score_evaluation
+from heuristic_fagr import *
 alpha_initial = -math.inf
 beta_initial = math.inf
 
@@ -105,9 +106,10 @@ class AI():
         if depthlevel == 0 or is_finalboard(currentboard):
             board_now = copy.deepcopy(currentboard)
             #heuristic_score = self.Heuristic(board_now)  
-            heuristic_score = score_evaluation(board_now,AI_maxplayer,stealing)
+            # heuristic_score = score_evaluation(board_now,AI_maxplayer,stealing)
+            heuristic_score = evaluation_function(board_now,AI_maxplayer,stealing)
             # print('score='+str(heuristic_score))
-            # print('leaf board')        
+            print('leaf board')        
             # print(board_now)                 
             return heuristic_score , board_now , AI_maxplayer
         

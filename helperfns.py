@@ -6,7 +6,7 @@ def play(board, block_no, player,mode):
     block_no = block_no -1
     if (player):
         block_no = block_no+7 
-        if (board [block_no] ==0 ):
+        if (board [block_no] ==0  ):
             print("Enter a valid move")
             return board, player
         for i in range(board[block_no]):
@@ -28,7 +28,7 @@ def play(board, block_no, player,mode):
     
     #1st player playing
     else:
-        if (board [block_no] ==0 ):
+        if (board [block_no] ==0 & -1 < block_no < 7):
             print("Enter a valid move")
             return board, player
         for i in range(board[block_no]):
