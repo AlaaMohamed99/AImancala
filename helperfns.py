@@ -113,16 +113,41 @@ def is_finalboard(board):
         return True
     return False
 
-def save_board(board):
+
+
+def converted_string_list(board):
+    converted_board = []
+    for i in range(1,len(board)-2):
+        if (board[i]== ',' or board[i] == ' '):
+            continue
+        converted_board.append( int(board[i]))
+    return converted_board
+
+def save_board(board, mode):
     file2 = open(r"board_state.txt","w+")
+    #print(board)
     file2.write(str(board))
+    file2.write("\n")
+    file2.write(str(mode))
     file2.close()
 
 def load_board():
     file2 = open(r"board_state.txt","r+")
-    board =file2.read()
+    game =file2.readlines()
     file2.close()
-    return board
+    board = converted_string_list(game[0])
+    if game[1] == "True":
+        mode = True
+    else:
+        mode = False
+    return board, mode
+
+#board = [6,1,3,2,3,2,3  , 2,2,0,1,3,1,0]
+#mode=1
+#save_board(board, mode)
+#board, mode= load_board()
+#print(board)
+
 
 """
 board = [5,1,3,2,3,2,3  , 2,2,0,1,3,1,0]
