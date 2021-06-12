@@ -36,7 +36,7 @@ class AI():
                 
                 if pocket == 6:
                     turn = 0
-                    print('repeat human')
+                    # print('repeat human')
                 else:
                     turn = 1
                 
@@ -65,7 +65,7 @@ class AI():
                 pocket -= 1
                 if pocket == 13:
                     turn = 1
-                    print('repeattt')
+                    # print('repeattt')
                 else:
                     turn = 0
                 moves[tuple(newboard)] = turn   
