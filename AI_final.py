@@ -158,7 +158,7 @@ class AI():
             #print(moves)
             return bestpath , list(move_and_score[bestpath]) , moves[move_and_score[bestpath]]
 
-    def Minimax_alphabeta(self, currentboard , depthlevel,alpha , beta ,stealing  ,AI_maxplayer ):
+    def Minimax_alphabeta_client(self, currentboard , depthlevel,alpha , beta ,stealing  ,AI_maxplayer ):
         
             heuristic_score = 0
             
