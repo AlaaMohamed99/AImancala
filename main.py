@@ -43,7 +43,7 @@ while(not is_finalboard(board)):
         save_board(board, mode)
         exit()
     else:
-        while (player == 0):
+        while (player == 0 and not is_finalboard(board)):
             block_no=input(" Enter a move: ")
             board, player= play(board, int(block_no),player, int(mode))       
             d.draw(board)
@@ -52,18 +52,18 @@ while(not is_finalboard(board)):
                 board, player= play(board, int(block_no),player, int(mode))
                 d.draw(board)
 
-        while(player == 1):
+        while(player == 1 and not is_finalboard(board)):
             bestpath,board,player = a.Minimax_alphabeta( board , depth,alpha_initial , beta_initial,mode ,player )
             d.draw(board)
             # print('bestpath ' + str(bestpath))            
 
 score, winner = calc_score(board)
 if winner == 0:
-    print("First player won!")
+    print("You won!")
 elif winner == 1:
-    print("Second player won!")
+    print("AI won!")
 else:
     print("Draw! no one won!")
 
 
-
+input("press close to exit") 

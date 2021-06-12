@@ -57,8 +57,8 @@ class AI():
                     if pocket > 13:
                         pocket = 0
                         newboard[pocket] = newboard[pocket] +1
-                    elif pocket == 7:
-                        pocket = 8
+                    elif pocket == 6:
+                        pocket = 7
                         newboard[pocket] = newboard[pocket] +1
                     else:
                         newboard[pocket] = newboard[pocket] +1
