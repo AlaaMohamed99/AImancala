@@ -1,6 +1,6 @@
 # AImancala
 
-Main project video: 
+Main project video: https://youtu.be/366bWnFaPM4
 Networking video:  https://youtu.be/r1ZySx5sYjo
 
 <h2>Brief description of the Game</h2>
