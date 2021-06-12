@@ -157,67 +157,69 @@ class AI():
                 #print(move_and_score)
             #print(moves)
             return bestpath , list(move_and_score[bestpath]) , moves[move_and_score[bestpath]]
-    
-    def Minimax_alphabeta_client(self, currentboard , depthlevel,alpha , beta ,stealing  ,AI_maxplayer ):
-    
-        heuristic_score = 0
-        
-        
-        #wslt lel akher aw khalst asasn
-        
-        if depthlevel == 0 or is_finalboard(currentboard):
-            board_now = copy.deepcopy(currentboard)
-            #heuristic_score = self.Heuristic(board_now)  
-            heuristic_score = score_evaluation(board_now,AI_maxplayer,stealing)
-            # heuristic_score = evaluation_function(board_now,AI_maxplayer,stealing)
-            #print('score='+str(heuristic_score))
-            #print('leaf board')        
-            # #print(board_now)                 
-            return heuristic_score , board_now , AI_maxplayer
-        
-        
-        if AI_maxplayer == 0:     
-            #print('depth='+str(depthlevel))
-            bestpath  = alpha_initial 
-            board_now = copy.deepcopy(currentboard)
-            move_and_score = dict()
-            # board_now = mancala_board.Board(currentboard) 
-            moves = self.possible_moves(AI_maxplayer, board_now)
-            for move_board,turn in moves.items():
-                # #print(',,,,,,,,,,')
-                # #print(move_board)
 
-                value,_ ,AI_maxplayer= self.Minimax_alphabeta(list(move_board), depthlevel-1 ,alpha , beta,stealing ,turn)
-                bestpath  = max(value , bestpath)
-                alpha = max(bestpath,alpha)
-                # #print(move_board)
-                move_and_score[value] = move_board
-                if alpha >= beta:
-                    break #cut branch
-                #print(move_and_score)
-            return bestpath , list(move_and_score[bestpath]) , moves[move_and_score[bestpath]]
-    
-        if AI_maxplayer == 1:    
-            #print('depth='+str(depthlevel))
-
-            bestpath  = beta_initial
-            board_now = copy.deepcopy(currentboard)
-            move_and_score = dict()
-            moves = self.possible_moves(AI_maxplayer, board_now)
-            for move_board,turn in moves.items():
-                # #print('-------------------')
-                # #print(move_board)
-               
-                value,_ ,AI_maxplayer= self.Minimax_alphabeta(list(move_board ), depthlevel-1, alpha , beta,stealing , turn)
-                bestpath  = min(value , bestpath)
-                alpha = min(bestpath,alpha)
-                # #print(move_board)
-                move_and_score[value] = move_board
-                if alpha >= beta:
-                    break #cut branch
-                # print(move_and_score)
-            return bestpath , list(move_and_score[bestpath]) , moves[move_and_score[bestpath]]
+    def Minimax_alphabeta(self, currentboard , depthlevel,alpha , beta ,stealing  ,AI_maxplayer ):
         
+            heuristic_score = 0
+            
+            
+            #wslt lel akher aw khalst asasn
+            
+            if depthlevel == 0 or is_finalboard(currentboard):
+                board_now = copy.deepcopy(currentboard)
+                #heuristic_score = self.Heuristic(board_now)  
+                heuristic_score = score_evaluation(board_now,AI_maxplayer,stealing)
+                # heuristic_score = evaluation_function(board_now,AI_maxplayer,stealing)
+                #print('score='+str(heuristic_score))
+                #print('leaf board')        
+                # #print(board_now)                 
+                return heuristic_score , board_now , AI_maxplayer
+            
+            
+            if AI_maxplayer == 0:     
+                #print('depth='+str(depthlevel))
+                bestpath  = alpha_initial 
+                board_now = copy.deepcopy(currentboard)
+                move_and_score = dict()
+                # board_now = mancala_board.Board(currentboard) 
+                moves = self.possible_moves(AI_maxplayer, board_now)
+                for move_board,turn in moves.items():
+                    # #print(',,,,,,,,,,')
+                    # #print(move_board)
+    
+                    value,m,AI_maxplayer= self.Minimax_alphabeta(list(move_board), depthlevel-1 ,alpha , beta,stealing ,turn)
+                    bestpath  = max(value , bestpath)
+                    alpha = max(bestpath,alpha)
+                    # #print(move_board)
+                    move_and_score[value] = move_board
+                    if alpha >= beta:
+                        break #cut branch
+                    #print(move_and_score)
+                #print(moves)
+                return bestpath , list(move_and_score[bestpath]) , moves[move_and_score[bestpath]]
+        
+            if AI_maxplayer == 1:    
+                #print('depth='+str(depthlevel))
+    
+                bestpath  = beta_initial
+                board_now = copy.deepcopy(currentboard)
+                move_and_score = dict()
+                moves = self.possible_moves(AI_maxplayer, board_now)
+                for move_board,turn in moves.items():
+                    # #print('-------------------')
+                    # #print(move_board)
+                   
+                    value,m ,AI_maxplayer= self.Minimax_alphabeta(list(move_board ), depthlevel-1, alpha , beta,stealing , turn)
+                    bestpath  = min(value , bestpath)
+                    alpha = min(bestpath,alpha)
+                    # #print(move_board)
+                    move_and_score[value] = move_board
+                    if alpha >= beta:
+                        break #cut branch
+                    #print(move_and_score)
+                #print(moves)
+                return bestpath , list(move_and_score[bestpath]) , moves[move_and_score[bestpath]]    
+ 
 
 # board =[4]*6  + [0] + [4]*6 + [0]
 # print(board)
