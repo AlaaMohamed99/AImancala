@@ -6,7 +6,9 @@ board =[4]*6  + [0] + [4]*6 + [0]
 d = Game()
 d.draw(board)
 
-load_brd= input("If you want to load the previous board press:1 ,start new game:0")
+load_brd= input("If you want to load the previous board press:1 ,start new game:0 ")
+depth_level= int(input("choose difficulty level:\n" +
+              '1: easy\n' +'2: meduim\n' +'3:hard\n' ))
 if int(load_brd) == 1:
     board, mode = load_board()
     player=0
@@ -17,16 +19,26 @@ else:
     player =int( input("choose 0 if you want to play first else 1 :  "))
 # level = int( input("choose difficulty level: "))
 
-
+if depth_level == 1:
+        depth = 3
+elif  depth_level == 1:
+        depth = 5
+elif  depth_level == 1:
+        depth = 8
+else: depth = 3
+        
+        
+        
+        
 if mode==0:
     mode= False
 else : mode=True
 
 
 a = AI(board)
-depth = 2
+# depth = 2
 while(not is_finalboard(board)):
-    choice = input("If you want to save the game press: 1 else press: 0  ")
+    choice = input("If you want to save the game press: 1 else press: 0   ")
     if (int(choice) == 1):
         save_board(board, mode)
         exit()
